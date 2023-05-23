@@ -18,7 +18,8 @@ class DatabaseSeeder extends Seeder
         //al lancio del seed viene lanciato anche ProjectSeeder presente nello stesso namespace di questo seeder
         $this->call([
             TypeSeeder::class,
-            ProjectSeeder::class
+            ProjectSeeder::class,
+            TechnologiesSeeder::class
         ]);
     }
 }
