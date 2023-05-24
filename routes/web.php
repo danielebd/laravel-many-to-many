@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\DashBoardController;
 use App\Http\Controllers\Admin\ProjectController;
+use App\Http\Controllers\Admin\TechnologiesController;
 use App\Http\Controllers\Admin\TypeController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,6 +31,7 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
     //crea le route create,edit, destroy, ecc.. :php artisan route:list
     Route::resource('projects', ProjectController::class)->parameters(['projects'=>'project:slug']);
     Route::resource('types', TypeController::class)->parameters(['types'=>'type:slug']);
+    Route::resource('technologies', TechnologiesController::class)->parameters(['technologies'=>'technologie:slug']);
 
 });
 
