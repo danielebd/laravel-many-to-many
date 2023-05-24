@@ -48,9 +48,10 @@ class TechnologiesController extends Controller
      * @param  \App\Models\Technologies  $technologies
      * @return \Illuminate\Http\Response
      */
-    public function show(Technologies $technologies)
+    public function show(string $slug)
     {
-        //
+        $technologie = Technologie::where('slug', $slug)->first();
+        return view('admin.technologies.show', compact('technologie'));
     }
 
     /**
@@ -59,7 +60,7 @@ class TechnologiesController extends Controller
      * @param  \App\Models\Technologies  $technologies
      * @return \Illuminate\Http\Response
      */
-    public function edit(Technologies $technologies)
+    public function edit(Technologie $technologie)
     {
         //
     }
@@ -71,7 +72,7 @@ class TechnologiesController extends Controller
      * @param  \App\Models\Technologies  $technologies
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateTechnologiesRequest $request, Technologies $technologies)
+    public function update(UpdateTechnologiesRequest $request, Technologie $technologie)
     {
         //
     }

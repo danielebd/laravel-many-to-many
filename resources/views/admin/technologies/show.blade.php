@@ -3,12 +3,12 @@
 @section('content')
     <div class="container">
         <h2 class="pt-5">
-            {{ $type->name }}
+            {{ $technologie->name }}
         </h2>
         Lista Projects:
         <hr>
         <ul>
-            @foreach ($type->projects as $project)
+            @foreach ($technologie->projects as $project)
                 <li><a href="{{route('admin.projects.show', $project)}}">{{ $project->title }}</a></li>
             @endforeach
         </ul>
