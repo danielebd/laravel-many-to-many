@@ -11,7 +11,8 @@
                 </ul>
             </div>
         @endif
-        <form action="{{ route('admin.projects.store') }}" method="POST" enctype="multipart/form-data" class="form-input-image">
+        <form action="{{ route('admin.projects.store') }}" method="POST" enctype="multipart/form-data"
+            class="form-input-image">
             @csrf
             <div class="row">
                 <div class="col mb-3">
@@ -20,8 +21,7 @@
                 </div>
                 <div class="col mb-3">
                     <label for="description" class="form-label">Description</label>
-                    <textarea type="text" class="form-control" id="description" name="description" cols="30" rows="4"
-                        >{{ old('description') }}</textarea>
+                    <textarea type="text" class="form-control" id="description" name="description" cols="30" rows="4">{{ old('description') }}</textarea>
                 </div>
             </div>
             <div class="row">
@@ -60,11 +60,18 @@
             </div>
             <select class="form-select" aria-label="Default select example" name="type_id" id="type_id">
                 <option value="">Select Type</option>
-                @foreach ( $types as $type )
-                    <option value="{{ $type->id }}" {{old('type_id') == $type->id ? 'selected': ''}}>{{ $type->name }}</option>
+                @foreach ($types as $type)
+                    <option value="{{ $type->id }}" {{ old('type_id') == $type->id ? 'selected' : '' }}>
+                        {{ $type->name }}</option>
                 @endforeach
-              </select>
-
+            </select>
+            <div class="btn-group my-2" role="group">
+                @foreach ($technologies as $technologie)
+                    <input type="checkbox" class="btn-check" value="{{$technologie->id}}" name="technologie[]" {{in_array($technologie->id, old('technologie', [])) ? 'checked' : ''}} id="{{ $technologie->id }}" autocomplete="off">
+                    <label class="btn btn-outline-primary" for="{{ $technologie->id }}">{{ $technologie->name }}</label>
+                @endforeach
+            </div>
+            <br>
             <button type="submit" class="btn btn-primary my-3">Crea</button>
         </form>
     </div>

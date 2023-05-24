@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Technologies;
 use App\Http\Requests\StoreTechnologiesRequest;
 use App\Http\Requests\UpdateTechnologiesRequest;
