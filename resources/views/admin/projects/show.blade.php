@@ -11,6 +11,15 @@
         <div class="fs-5">Creared By: {{ $project->created_by }}</div>
         <div class="fs-5">Budget: {{ $project->budget }}</div>
         <div class="fs-5">Type: {{ $project->type?->name ?: 'Nessuna Categoria' }}</div>
+        <div class="fs-5">Tech:
+            @if (isset($project->technologies) && count($project->technologies) > 0)
+                @foreach ($project->technologies as $tech)
+                    {{ $tech->name }}
+                @endforeach
+            @else
+                nessuna tech
+            @endif
+        </div>
         @if ($project->image)
             <div class="fs-5">image: </div>
             <img src="{{ asset('storage/' . $project->image) }}" alt="">

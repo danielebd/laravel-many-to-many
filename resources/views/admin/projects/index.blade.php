@@ -40,7 +40,11 @@
                             @endif
                         </td>
                         <td>{{ $project->completed == 1 ? 'yes' : 'no' }}</td>
-                        <td>{{ optional($project->technologie)->name }}</td>
+                        <td>
+                            @foreach ($project->technologies as $tech)
+                                {{ $tech->name }}
+                            @endforeach
+                        </td>
                         <td class="d-flex">
                             <a href="{{ route('admin.projects.show', $project->slug) }}"
                                 class="btn btn-sm btn-primary">Show</a>
@@ -57,8 +61,7 @@
                                 <div class="modal-header">
                                     <h1 class="modal-title fs-5" id="exampleModalLabel">Sei sicuro di voler cancellare
                                         {{ $project->title }}?</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                                     </button>
                                 </div>
 
