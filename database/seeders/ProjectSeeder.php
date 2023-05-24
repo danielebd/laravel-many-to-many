@@ -6,6 +6,7 @@ use App\Models\Project;
 use App\Models\Type;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Str;
 
 class ProjectSeeder extends Seeder
@@ -17,18 +18,24 @@ class ProjectSeeder extends Seeder
      */
     public function run()
     {
-        $projects = config('project');
+        
+        //disattiva relazioni
+        Schema::disableForeignKeyConstraints();
 
-        //elimina tutti i project prima del seed
+        //elimina dati
         Project::truncate();
 
-        foreach($projects as $project){
+        //riattiva relazioni
+        Schema::enableForeignKeyConstraints();
 
-            
+        $projects = config('project');
+        foreach ($projects as $project) {
+
+
 
             //type casuale fra quelli inseriti nell'array
             $type = Type::inRandomOrder()->first();
-            
+
             $newProject = new Project();
 
             $newProject->title = $project['title'];
